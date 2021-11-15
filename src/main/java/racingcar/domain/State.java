@@ -1,14 +1,15 @@
 package racingcar.domain;
 
+import racingcar.application.CarConstant;
+
 import java.util.Objects;
 
 public class State {
 
-    private static final int DEFAULT_STATE = 0;
     private int state;
 
     public State() {
-        this(DEFAULT_STATE);
+        this(CarConstant.CAR_DEFAULT_STATE);
     }
 
     public State(int state) {
@@ -17,6 +18,10 @@ public class State {
 
     public void increase() {
         this.state++;
+    }
+
+    public int greaterThan(int other) {
+        return Math.max(this.state, other);
     }
 
     public int getState() {

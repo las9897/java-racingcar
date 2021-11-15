@@ -3,6 +3,9 @@ package racingcar.view;
 import racingcar.domain.Car;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static racingcar.application.CarConstant.OUTPUT_CAR_WINNER_MESSAGE;
 
 public class OutputView {
 
@@ -25,7 +28,8 @@ public class OutputView {
         print(result.toString());
     }
 
-    public static void print(List<String> names, String message) {
-        print(String.join(", ", names) + message);
+    public static void print(List<Car> cars) {
+        List<String> carNames = cars.stream().map(Car::getName).collect(Collectors.toList());
+        print(String.join(", ", carNames) + OUTPUT_CAR_WINNER_MESSAGE);
     }
 }

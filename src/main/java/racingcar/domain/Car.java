@@ -7,7 +7,6 @@ import java.util.Objects;
 
 public class Car {
 
-    //    private int state;
     private final State state;
     private String name;
 
@@ -20,10 +19,23 @@ public class Car {
         this.name = name;
     }
 
+    public Car(String name, int state) {
+        this.state = new State(state);
+        this.name = name;
+    }
+
     public void increaseState(MovingStrategy randomMovingStrategy) {
         if (randomMovingStrategy.isMove()) {
             this.state.increase();
         }
+    }
+
+    public boolean isWinner(int max) {
+        return this.state.equals(new State(max));
+    }
+
+    public int greaterThan(int other) {
+        return this.state.greaterThan(other);
     }
 
     public int getState() {
